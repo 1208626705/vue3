@@ -6,7 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
-// https://vitejs.dev/config/
+
+
 export default defineConfig({
 
 
@@ -40,6 +41,17 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
-  }
+  },
+  server: {
+    proxy: {
+
+      '/api': {
+        target: 'http://sph-api.atguigu.cn', // 目标服务器地址
+        changeOrigin: true, // 修改请求头中的 Origin
+        //路径重写
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 
 })

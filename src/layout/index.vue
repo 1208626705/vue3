@@ -4,8 +4,16 @@
 import Logo from "@/layout/logo/index.vue";
 import Menu from "@/layout/menu/index.vue";
 import Main from "@/layout/main/index.vue";
+import Tabbar from "@/layout/tabbar/index.vue";
 import useUserStore from "@/stores/modules/user";
+import useLayOutSettingStore from "@/stores/modules/setting";
+
 let userStore = useUserStore();
+// eslint-disable-next-line no-import-assign,no-redeclare
+let layOutSettingStore: any = useLayOutSettingStore();
+import {useRoute} from 'vue-router';
+
+let $route = useRoute();
 
 </script>
 
@@ -14,23 +22,24 @@ let userStore = useUserStore();
 
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider">
+    <div class="layout_slider" :class="{fold:!!layOutSettingStore.fold}">
       <!--      logo-->
       <Logo></Logo>
       <!--       滚动条-->
       <el-scrollbar class="scrollbar">
         <!--       滚动组件-->
-
-        <el-menu class="el-menu" text-color="white"  background-color="#001529">
+        <el-menu class="el-menu" text-color="white" background-color="#001529" :collapse="layOutSettingStore.fold">
           <Menu :menuList="userStore.menuRouters"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar"></div>
+    <div class="layout_tabbar" :class="{fold:!!layOutSettingStore.fold}">
+      <Tabbar></Tabbar>
+    </div>
     <!-- 内容展示区域 -->
-    <div class="layout_main">
-<!--      router-view-->
+    <div class="layout_main" :class="{fold:!!layOutSettingStore.fold}">
+      <!--      router-view-->
       <Main></Main>
     </div>
   </div>
@@ -48,7 +57,10 @@ let userStore = useUserStore();
     height: 100vh;
     background: $base-menu-background;
     transition: all 0.3s;
-
+    &.fold {
+      width: $base-menu-min-width;
+      //left: $base-menu-min-width;
+    }
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base-menu-logo-height);

@@ -1,16 +1,19 @@
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+//引入仓库
+import pinia from "@/stores";
 
 import App from './App.vue'
 import router from '@/router/index'
 import 'virtual:svg-icons-register'
 import '@/styles/index.scss'
 // import dotenv from 'dotenv'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+import './permisstion';
+
 // 如果您正在使用CDN引入，请删除下面一行。
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 
 
 
@@ -18,7 +21,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // dotenv.config();
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 app.use(ElementPlus)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

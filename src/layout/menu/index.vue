@@ -21,6 +21,7 @@
     </el-menu-item>
     <!-- 有子路由且个数大于一个1 -->
     <el-sub-menu :index="item.path" v-else-if="!item.meta.hidden && item.children && item.children.length > 1">
+
       <template #title>
         <el-icon>
           <component :is="item.meta.icon"></component>
@@ -43,7 +44,7 @@ let $router = useRouter();
 const goRoute = (vc: any) => {
   //路由跳转
   $router.push({
-    path:vc.index
+    path: vc.index
   });
 }
 </script>

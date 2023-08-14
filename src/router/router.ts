@@ -6,18 +6,19 @@ export const constantRoute = [
         component: () => import('@/views/login/index.vue'),
         meta: {
             title: "登录",
-            hidden: false,
+            hidden: true,
         },
 
 
     },
     {
-        name: 'layout', // 名称
+        name: '', // 名称
         component: () => import('@/layout/index.vue'),
+        path: '/', // 登录之后的
         meta: {
-            title: "layout",
-            hidden: false,
-            icon: "Discount",
+            // title: "layout",
+            // hidden: false,
+            // icon: "Discount",
         },
         children: [
             {
