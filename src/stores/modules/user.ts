@@ -1,7 +1,7 @@
 // 创建用户相关的仓库
 import {defineStore} from "pinia";
 import {reqLogin, reqUserInfo,reqLogout} from "@/api/user";
-import type {LoginFormData, loginResponseData, userInfoResponseData} from "@/api/user/type";
+import type { loginResponseData, userInfoResponseData} from "@/api/user/type";
 import {constantRoute} from "@/router/router";
 import type {UserState} from "@/stores/modules/type";
 
@@ -18,7 +18,7 @@ const useUserStore = defineStore("User", {
     // 异步逻辑
     actions: {
         // 用户登录
-        async userLogin(data: LoginFormData) {
+        async userLogin(data: loginResponseData) {
             const result: loginResponseData = await reqLogin(data);
             if (result.code == 200) {
                 this.token = result.data
@@ -31,9 +31,9 @@ const useUserStore = defineStore("User", {
         // 获取用户数据
         async userInfo() {
             const result: any = await reqUserInfo();
-            console.log(result)
+            // console.log(result)
             if (result.code == 200) {
-                this.username = result.data.username
+                this.username = result.data.name
                 this.avatar = result.data.avatar
                 return 'ok';
             } else {
@@ -43,7 +43,7 @@ const useUserStore = defineStore("User", {
         },
         async logout() {
 
-            // console.log(result.data)
+            const result = await reqLogout();
             this.username = '';
             this.avatar = '';
             // this.menuRouters = [];

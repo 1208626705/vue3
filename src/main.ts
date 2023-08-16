@@ -10,6 +10,8 @@ import '@/styles/index.scss'
 // import dotenv from 'dotenv'
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+
+import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 import './permisstion';
 
 // 如果您正在使用CDN引入，请删除下面一行。
@@ -23,7 +25,7 @@ const app = createApp(App)
 
 app.use(pinia)
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus,{locale:zhCn})
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }

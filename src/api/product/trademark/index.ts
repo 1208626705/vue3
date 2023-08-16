@@ -1,6 +1,7 @@
 //书写品牌管理模块接口
 import request from '@/utils/request'
-import type { TradeMarkResponseData, TradeMark } from './type'
+import type {TradeMarkResponseData, TradeMark} from './type'
+import type {ResponseData} from "@/api/type";
 //品牌管理模块接口地址
 enum API {
   //获取已有品牌接口
@@ -23,10 +24,10 @@ export const reqHasTrademark = (page: number, limit: number) =>
 export const reqAddOrUpdateTrademark = (data: TradeMark) => {
   //修改已有品牌的数据
   if (data.id) {
-    return request.put<any, any>(API.UPDATETRADEMARK_URL, data)
+    return request.put<any, ResponseData>(API.UPDATETRADEMARK_URL, data)
   } else {
     //新增品牌
-    return request.post<any, any>(API.ADDTRADEMARK_URL, data)
+    return request.post<any, ResponseData>(API.ADDTRADEMARK_URL, data)
   }
 }
 

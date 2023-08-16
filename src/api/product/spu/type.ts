@@ -31,7 +31,7 @@ export interface HasSpuResponseData extends ResponseData {
 
 //品牌数据的TS类型
 export interface Trademark {
-  id: number
+  id?: number
   tmName: string
   logoUrl: string
 }
