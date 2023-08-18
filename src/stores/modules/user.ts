@@ -1,7 +1,7 @@
 // 创建用户相关的仓库
 import {defineStore} from "pinia";
 import {reqLogin, reqUserInfo,reqLogout} from "@/api/user";
-import type { loginResponseData, userInfoResponseData} from "@/api/user/type";
+import type { loginResponseData} from "@/api/user/type";
 import {constantRoute} from "@/router/router";
 import type {UserState} from "@/stores/modules/type";
 

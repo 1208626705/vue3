@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {onMounted, reactive, ref} from "vue";
-import {reqAddOrUpdateTrademark, reqHasTrademark} from "@/api/product/trademark";
+import {reqAddOrUpdateTrademark, reqDeleteTrademark, reqHasTrademark} from "@/api/product/trademark";
 import {ResponseData} from "@/api/acl/menu/type";
 import {TradeMarkResponseData} from "@/api/product/trademark/type";
 import {ElMessage, UploadProps} from "element-plus";
@@ -62,6 +62,9 @@ const editTrademark = (row) => {
   trademarkParams.tmName = row.tmName;
 }
 const deleteTrademark = (row) => {
+  const promise = reqDeleteTrademark(row.id);
+  getReqHasTrademark();
+
 
 }
 // 取消按钮
@@ -100,11 +103,10 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
 }
 //  自定义校验规则
 const validatorTmName = (rule:any,value:any,callBack:any) => {
-
   if(value.trim().length>=2){
-    callBack()
+    callBack();
   }else {
-    callBack(new Error("品牌位数未大于2位"))
+    callBack(new Error("品牌位数未大于2位"));
   }
 }
 const rules = {
