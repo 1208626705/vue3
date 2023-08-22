@@ -7,6 +7,8 @@ onMounted(() => {
   getC1();
 
 })
+defineProps(['scene'])
+
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getC1() {
@@ -34,12 +36,14 @@ const handler2 = () => {
           v-model="categoryStore.c1Id"
           placeholder="请选择"
           @change="handler1"
+          :disabled="scene==0"
       >
         <el-option
             v-for="c1 in categoryStore.c1Arr"
             :key="c1.id"
             :label="c1.name"
             :value="c1.id"
+
         />
       </el-select>
     </el-form-item>
@@ -48,6 +52,7 @@ const handler2 = () => {
           v-model="categoryStore.c2Id"
           placeholder="请选择"
           @change="handler2"
+          :disabled="scene==0"
       >
         <el-option
             v-for="c2 in categoryStore.c2Arr"
@@ -62,6 +67,7 @@ const handler2 = () => {
       <el-select
           v-model="categoryStore.c3Id"
           placeholder="请选择"
+          :disabled="scene==0"
       >
         <el-option
             v-for="c3 in categoryStore.c3Arr"

@@ -20,6 +20,7 @@ export const constantRoute = [
             // hidden: false,
             // icon: "Discount",
         },
+        redirect: "/home",
         children: [
             {
                 name: 'home', // 名称

@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 
-import {reqC1, reqC2} from "@/api/product/attr";
+import {reqC1, reqC2, reqC3} from "@/api/product/attr";
 import type {CategoryResponseData} from "@/api/product/attr/type";
 import {types} from "sass";
 import String = types.String;
@@ -27,7 +27,7 @@ const useCategoryStore = defineStore('category', {
             this.c2Arr = result.data
         },
         async getC3() {
-            const result: CategoryResponseData = await reqC2(this.c2Id);
+            const result: CategoryResponseData = await reqC3(this.c2Id);
             this.c3Arr = result.data
         },
     },
