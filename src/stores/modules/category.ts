@@ -2,8 +2,6 @@ import {defineStore} from "pinia";
 
 import {reqC1, reqC2, reqC3} from "@/api/product/attr";
 import type {CategoryResponseData} from "@/api/product/attr/type";
-import {types} from "sass";
-import String = types.String;
 
 const useCategoryStore = defineStore('category', {
     state: () => {

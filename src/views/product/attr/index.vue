@@ -10,7 +10,7 @@ import {ElMessage} from "element-plus";
 const $router = useRouter();
 let categoryStore = useCategoryStore();
 let attrArr = ref<Attr[]>([]);
-// 如果是0 显示table
+// 场景显示
 let scene = ref<number>(1);
 // 监听三级联动
 watch(() => categoryStore.c3Id, () => {
